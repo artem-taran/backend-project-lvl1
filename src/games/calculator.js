@@ -1,6 +1,6 @@
 import { cons, car, cdr } from '@hexlet/pairs';
 import readlineSync from 'readline-sync';
-import { getRandomNumberRange, print } from '../lib.js';
+import { getRandomNumberRange, print } from '../utils.js';
 
 const createMathExpression = () => {
   const operators = ['+', '-', '*'];

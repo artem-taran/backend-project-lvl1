@@ -1,5 +1,5 @@
-import { print, getUserName, greetUser } from './src/lib.js';
-import calculator from './src/games/calculator.js';
+import { print, getUserName, greetUser } from './src/utils.js';
+import gcd from './src/games/gcd.js';
 
 const greetingMessage = 'Welcome to the Brain Games';
 print(greetingMessage);
@@ -7,4 +7,4 @@ print(greetingMessage);
 const userName = getUserName();
 greetUser(userName);
 
-calculator(userName);
+gcd(userName);

@@ -18,15 +18,3 @@ export const getUserName = () => {
 export const greetUser = (name) => {
   console.log(`Hello, ${name}`);
 };
-
-export const getOppositeAnswer = (answer) => {
-  switch (answer) {
-    case 'yes':
-      return 'no';
-    case 'no':
-      return 'yes';
-
-    default:
-      throw new Error('Unkonwn answer');
-  }
-};
