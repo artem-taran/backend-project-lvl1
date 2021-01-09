@@ -2,7 +2,6 @@ import readlineSync from 'readline-sync';
 
 export const getRandomNumberRange = (min, max) => {
   const randomNumber = Math.random() * (max - min) + min;
-  console.log('randomNumber: ', Math.round(randomNumber));
   return Math.round(randomNumber);
 };
 
