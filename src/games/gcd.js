@@ -27,7 +27,6 @@ const askPlayer = () => {
   const QA = generateQA();
   const question = getQuestion(QA);
   const answer = getAnswer(QA);
-  console.log('correct: ', answer);
 
   print(gameInstruction);
   print(`Question: ${question}`);
