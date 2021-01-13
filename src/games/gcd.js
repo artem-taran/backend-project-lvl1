@@ -1,6 +1,9 @@
-import readlineSync from 'readline-sync';
-import { cons, car, cdr } from '@hexlet/pairs';
-import { print, getRandomNumberRange } from '../utils.js';
+import { makeQA } from '../make-qa.js';
+import { print } from '../cli.js';
+import { repeatAskPlayer } from '../make-ask.js';
+import getRandomNumberRange from '../utils.js';
+
+const gameInstruction = 'Find the greatest common divisor of given numbers.';
 
 const getGCD = (a, b) => {
   if (b === 0) {
@@ -10,54 +13,16 @@ const getGCD = (a, b) => {
   return getGCD(b, a % b);
 };
 
-const generateQA = () => {
-  const operand1 = getRandomNumberRange(2, 50);
-  const operand2 = getRandomNumberRange(2, 50);
-  return cons(`${operand1} ${operand2}`, getGCD(operand1, operand2));
+const makePairOfTaskWithSolution = () => {
+  const min = 2;
+  const max = 40;
+  const operand1 = getRandomNumberRange(min, max);
+  const operand2 = getRandomNumberRange(min, max);
+  return makeQA(`${operand1} ${operand2}`, getGCD(operand1, operand2));
 };
 
-const getQuestion = (QA) => car(QA);
-const getAnswer = (QA) => cdr(QA);
-
-const check = (answer, correctAnswer) => answer === correctAnswer;
-
-const askPlayer = () => {
-  const gameInstruction = 'Find the greatest common divisor of given numbers.';
-
-  const QA = generateQA();
-  const question = getQuestion(QA);
-  const answer = getAnswer(QA);
-
+export default (playerName, count) => {
   print(gameInstruction);
-  print(`Question: ${question}`);
 
-  const playerAnswer = Number(readlineSync.question('Your answer: ').trim());
-
-  return cons(playerAnswer, answer);
-};
-
-const getPlayerAnswer = (playerAnswer) => car(playerAnswer);
-const getCorrectAnswer = (playerAnswer) => cdr(playerAnswer);
-
-const repeatQuestion = (count, playerName) => {
-  if (count === 0) {
-    return print(`Congratulations, ${playerName}`);
-  }
-
-  const playerAndCorrectAnswer = askPlayer();
-  const playerAnswer = getPlayerAnswer(playerAndCorrectAnswer);
-  const correctAnswer = getCorrectAnswer(playerAndCorrectAnswer);
-
-  const isCorrectPlayerAnswer = check(playerAnswer, correctAnswer);
-  if (!isCorrectPlayerAnswer) {
-    return print(`${playerAnswer} is wrong answer , Correct answer was ${correctAnswer}
-      Let's try again, ${playerName}!`);
-  }
-
-  return repeatQuestion(count - 1, playerName);
-};
-
-export default (playerName) => {
-  const questionCount = 3;
-  repeatQuestion(questionCount, playerName);
+  repeatAskPlayer(playerName, count, makePairOfTaskWithSolution);
 };

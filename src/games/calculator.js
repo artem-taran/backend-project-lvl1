@@ -1,61 +1,34 @@
-import { cons, car, cdr } from '@hexlet/pairs';
-import readlineSync from 'readline-sync';
-import { getRandomNumberRange, print } from '../utils.js';
+import { makeQA } from '../make-qa.js';
+import getRandomNumberRange from '../utils.js';
+import { repeatAskPlayer } from '../make-ask.js';
+import { print } from '../cli.js';
+
+const gameInstruction = 'What is the result of the expression';
 
 const createMathExpression = () => {
   const operators = ['+', '-', '*'];
   const length = operators.length - 1;
+  const min = 2;
+  const max = 20;
   const randomIndex = getRandomNumberRange(0, length);
-  const a = getRandomNumberRange(0, 20);
-  const b = getRandomNumberRange(0, 20);
+  const operand1 = getRandomNumberRange(min, max);
+  const operand2 = getRandomNumberRange(min, max);
 
   switch (operators[randomIndex]) {
     case '+':
-      return cons(`${a} + ${b}`, a + b);
+      return makeQA(`${operand1} + ${operand2}`, operand1 + operand2);
     case '-':
-      return cons(`${a} - ${b}`, a - b);
+      return makeQA(`${operand1} - ${operand2}`, operand1 - operand2);
     case '*':
-      return cons(`${a} * ${b}`, a * b);
+      return makeQA(`${operand1} * ${operand2}`, operand1 * operand2);
 
     default:
       throw new Error('Unknown operator');
   }
 };
 
-const getMathExpressionBody = (exp) => car(exp);
-const getMathExpressionResult = (exp) => cdr(exp);
+export default (playerName, count) => {
+  print(gameInstruction);
 
-const check = (result1, result2) => result1 === result2;
-
-const askUser = () => {
-  const mathExpression = createMathExpression();
-  const question = getMathExpressionBody(mathExpression);
-  const correctAnswer = getMathExpressionResult(mathExpression);
-
-  print('What is the result of the expression');
-  print(`Question: ${question}`);
-
-  const userAnswer = Number(readlineSync.question('Your answer: ').trim());
-  return cons(userAnswer, correctAnswer);
-};
-
-const repeatQuestion = (count, user) => {
-  if (count === 0) {
-    return print(`Congratulations, ${user}!`);
-  }
-
-  const answer = askUser();
-  const userAnswer = car(answer);
-  const correctAnswer = cdr(answer);
-  if (!check(userAnswer, correctAnswer)) {
-    return print(`${userAnswer} is wrong answer , Correct answer was ${correctAnswer}
-      Let's try again, ${user}!`);
-  }
-
-  return repeatQuestion(count - 1, user);
-};
-
-export default (playerName) => {
-  const questionCount = 3;
-  repeatQuestion(questionCount, playerName);
+  repeatAskPlayer(playerName, count, createMathExpression);
 };

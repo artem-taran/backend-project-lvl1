@@ -1,10 +1,26 @@
 import readlineSync from 'readline-sync';
 
-export const getUserName = () => {
-  const name = readlineSync.question('May I have your name? ');
+export const print = (msg) => {
+  console.log(msg);
+};
+
+export const getPlayerName = () => {
+  const name = readlineSync.question('\nMay I have your name? ');
   return name;
 };
 
-export const greetUser = () => {
-  console.log(`Hello, ${getUserName()}`);
+export const getPlayerInputNumber = () => {
+  const answer = readlineSync.question('\nYour answer: ');
+
+  return Number(answer.trim());
+};
+
+export const getPlayerInputString = () => {
+  const answer = readlineSync.question('\nYour answer: ');
+
+  return answer.trim().toLowerCase();
+};
+
+export const greetPlayer = (name) => {
+  console.log(`\nHello, ${name}`);
 };

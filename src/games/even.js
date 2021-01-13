@@ -1,11 +1,7 @@
-import readlineSync from 'readline-sync';
-import { getUserName } from './cli.js';
-
-const getRandomNumber = () => Math.ceil(Math.random() * 10);
-
-const print = (msg) => {
-  console.log(msg);
-};
+import { makeQA } from '../make-qa.js';
+import getRandomNumberRange from '../utils.js';
+import { repeatAskPlayer } from '../make-ask.js';
+import { print } from '../cli.js';
 
 const isEven = (number) => number % 2 === 0;
 
@@ -14,46 +10,19 @@ const check = (number) => {
   return result;
 };
 
-const getOppositeAnswer = (answer) => {
-  switch (answer) {
-    case 'yes':
-      return 'no';
-    case 'no':
-      return 'yes';
+const generateNumber = () => {
+  const min = 0;
+  const max = 20;
+  const number = getRandomNumberRange(min, max);
+  const answer = check(number);
 
-    default:
-      throw new Error('Unkonwn answer');
-  }
+  return makeQA(number, answer);
 };
 
-const repeatQuestion = (count, name) => {
-  if (count === 0) {
-    return print(`Congratulations, ${name}!`);
-  }
+const gameInstruction = 'Answer "yes" if the number is even, otherwise answer "no"';
 
-  const randomNumber = getRandomNumber();
+export default (playerName, count) => {
+  print(gameInstruction);
 
-  const userAnswer = readlineSync.question(`Question: ${randomNumber}: `).trim().toLowerCase();
-
-  if (check(randomNumber) !== userAnswer) {
-    return print(`${userAnswer} is wrong answer , Correct answer was ${getOppositeAnswer(userAnswer)}
-      Let's try again, ${name}!`);
-  }
-
-  print('Correct');
-
-  return repeatQuestion(count - 1, name);
+  repeatAskPlayer(playerName, count, generateNumber);
 };
-
-const askUser = () => {
-  const questionCounter = 3;
-  print('Welcome to the Brain Games!');
-
-  const userName = getUserName();
-  print(`Hello, ${userName}`);
-  print('Answer "yes" if the number is even, otherwise answer "no"');
-
-  repeatQuestion(questionCounter, userName);
-};
-
-export default askUser;
