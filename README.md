@@ -5,10 +5,7 @@
 
 <a href="https://github.com/artem-taran/backend-project-lvl1/actions/"><img src="https://github.com/artem-taran/backend-project-lvl1/workflows/Super-Linter/badge.svg" /></a>
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 9ab7df3859949514cfad726ea878eb7a674f6ddf
 <H1>Examples</H1>
 
 [![asciicast](https://asciinema.org/a/Cu6S4s1cZG2Mh6TyRHV3LsD5i.svg)](https://asciinema.org/a/Cu6S4s1cZG2Mh6TyRHV3LsD5i)
