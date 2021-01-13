@@ -1,22 +1,34 @@
 import readlineSync from 'readline-sync';
-import { print, getPlayerName, greetPlayer } from './src/cli.js';
-import calculator from './src/games/calculator.js';
-import even from './src/games/even.js';
-import gcd from './src/games/gcd.js';
-import progression from './src/games/progression.js';
-import prime from './src/games/prime.js';
+import { print, getPlayerName, greetPlayer } from './lib/cli.js';
+import calculator from './games/calculator.js';
+import even from './games/even.js';
+import gcd from './games/gcd.js';
+import progression from './games/progression.js';
+import prime from './games/prime.js';
 
-const questionCount = 3;
-const greetingMessage = '\nWelcome to the Brain Games';
+export default () => {
+  const questionCount = 3;
+  const greetingMessage = '\nWelcome to the Brain Games';
 
-print(greetingMessage);
-const playerName = getPlayerName();
+  print(greetingMessage);
+  const playerName = getPlayerName();
+  greetPlayer(playerName);
 
-greetPlayer(playerName);
+  const gameList = {
+    'Solve Expressions': calculator,
+    'Is even a number?': even,
+    'Find GCD': gcd,
+    'Solve progression': progression,
+    'Is prime a number': prime,
+  };
+  const gamesTitles = Object.keys(gameList);
+  const gamesNames = Object.values(gameList);
 
-const games = ['even', 'calculator', 'gcd', 'progression', 'prime'];
-const listGames = [even, calculator, gcd, progression, prime];
-const selectedIndexGame = readlineSync.keyInSelect(games, '\nPlease shoose a game');
-const selectedGame = listGames[selectedIndexGame];
+  const selectedIndexGame = readlineSync.keyInSelect(gamesTitles, '\nPlease shoose a game');
+  if (selectedIndexGame === -1) {
+    return console.log('Maybe next time...');
+  }
+  const selectedGame = gamesNames[selectedIndexGame];
 
-selectedGame(playerName, questionCount);
+  return selectedGame(playerName, questionCount);
+};

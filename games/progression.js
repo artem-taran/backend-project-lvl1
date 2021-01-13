@@ -1,7 +1,7 @@
-import { makeQA } from '../make-qa.js';
-import getRandomNumberRange from '../utils.js';
-import { print } from '../cli.js';
-import { repeatAskPlayer } from '../make-ask.js';
+import { makeQA } from '../lib/make-qa.js';
+import getRandomNumberRange from '../lib/utils.js';
+import { print } from '../lib/cli.js';
+import { repeatAskPlayer } from '../lib/make-ask.js';
 
 const gameInstruction = 'What number is missing in the progression?';
 
@@ -38,8 +38,10 @@ const makePairOfTaskWithSolution = () => {
   return makeQA(question, answer);
 };
 
-export default (playerName, count) => {
+const progression = (playerName, count) => {
   print(gameInstruction);
 
   repeatAskPlayer(playerName, count, makePairOfTaskWithSolution);
 };
+
+export default progression;

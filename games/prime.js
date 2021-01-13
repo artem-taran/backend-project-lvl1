@@ -1,7 +1,7 @@
-import { makeQA } from '../make-qa.js';
-import getRandomNumberRange from '../utils.js';
-import { repeatAskPlayer } from '../make-ask.js';
-import { print } from '../cli.js';
+import { makeQA } from '../lib/make-qa.js';
+import getRandomNumberRange from '../lib/utils.js';
+import { repeatAskPlayer } from '../lib/make-ask.js';
+import { print } from '../lib/cli.js';
 
 const gameInstruction = 'Answer "yes" if given number is prime. Otherwise answer "no"';
 
@@ -37,8 +37,10 @@ const makePairOfTaskWithSolution = () => {
   return makeQA(number, solution);
 };
 
-export default (playerName, count) => {
+const prime = (playerName, count) => {
   print(gameInstruction);
 
   repeatAskPlayer(playerName, count, makePairOfTaskWithSolution);
 };
+
+export default prime;

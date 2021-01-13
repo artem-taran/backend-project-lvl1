@@ -1,7 +1,7 @@
-import { makeQA } from '../make-qa.js';
-import { print } from '../cli.js';
-import { repeatAskPlayer } from '../make-ask.js';
-import getRandomNumberRange from '../utils.js';
+import { makeQA } from '../lib/make-qa.js';
+import { print } from '../lib/cli.js';
+import { repeatAskPlayer } from '../lib/make-ask.js';
+import getRandomNumberRange from '../lib/utils.js';
 
 const gameInstruction = 'Find the greatest common divisor of given numbers.';
 
@@ -21,8 +21,10 @@ const makePairOfTaskWithSolution = () => {
   return makeQA(`${operand1} ${operand2}`, getGCD(operand1, operand2));
 };
 
-export default (playerName, count) => {
+const gcd = (playerName, count) => {
   print(gameInstruction);
 
   repeatAskPlayer(playerName, count, makePairOfTaskWithSolution);
 };
+
+export default gcd;
