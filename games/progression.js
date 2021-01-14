@@ -28,12 +28,12 @@ const generateProgression = () => {
 const generateTaskWithSolution = () => {
   const progression = generateProgression();
   const length = progression.length - 1;
-  const placeHolder = '.. ';
+  const placeHolder = '..';
   const randomIndex = getRandomNumberRange(0, length);
   const progressionWithHiddenElement = [...progression];
   progressionWithHiddenElement[randomIndex] = placeHolder;
 
-  const question = progressionWithHiddenElement.join(', ');
+  const question = progressionWithHiddenElement.join(' ');
   const answer = progression[randomIndex];
 
   return makeQA(question, answer);
