@@ -2,6 +2,7 @@ import { makeQA } from '../lib/make-qa.js';
 import { print } from '../lib/cli.js';
 import { repeatAskPlayer } from '../lib/make-ask.js';
 import getRandomNumberRange from '../lib/utils.js';
+import main from '../index.js';
 
 const gameInstruction = 'Find the greatest common divisor of given numbers.';
 
@@ -13,7 +14,7 @@ const getGCD = (a, b) => {
   return getGCD(b, a % b);
 };
 
-const makePairOfTaskWithSolution = () => {
+const generateTaskWithSolution = () => {
   const min = 2;
   const max = 40;
   const operand1 = getRandomNumberRange(min, max);
@@ -24,7 +25,7 @@ const makePairOfTaskWithSolution = () => {
 const gcd = (playerName, count) => {
   print(gameInstruction);
 
-  repeatAskPlayer(playerName, count, makePairOfTaskWithSolution);
+  repeatAskPlayer(playerName, count, generateTaskWithSolution);
 };
 
-export default gcd;
+export default () => main(gcd);

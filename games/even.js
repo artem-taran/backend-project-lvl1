@@ -2,6 +2,7 @@ import { makeQA } from '../lib/make-qa.js';
 import getRandomNumberRange from '../lib/utils.js';
 import { repeatAskPlayer } from '../lib/make-ask.js';
 import { print } from '../lib/cli.js';
+import main from '../index.js';
 
 const isEven = (number) => number % 2 === 0;
 
@@ -27,4 +28,4 @@ const even = (playerName, count) => {
   repeatAskPlayer(playerName, count, generateNumber);
 };
 
-export default even;
+export default () => main(even);

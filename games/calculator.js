@@ -2,6 +2,7 @@ import { makeQA } from '../lib/make-qa.js';
 import getRandomNumberRange from '../lib/utils.js';
 import { repeatAskPlayer } from '../lib/make-ask.js';
 import { print } from '../lib/cli.js';
+import main from '../index.js';
 
 const gameInstruction = 'What is the result of the expression';
 
@@ -33,4 +34,4 @@ const calculator = (playerName, count) => {
   repeatAskPlayer(playerName, count, createMathExpression);
 };
 
-export default calculator;
+export default () => main(calculator);
