@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import { print, getPlayerName, greetPlayer } from './lib/cli.js';
+import { print } from './lib/cli.js';
 import calculator from './games/calculator.js';
 import even from './games/even.js';
 import gcd from './games/gcd.js';
@@ -18,9 +18,9 @@ export default () => {
   const gamesNames = Object.values(gameList);
   const cancel = -1;
 
-  const selectedIndexGame = readlineSync.keyInSelect(gamesTitles, '\nPlease shoose a game');
+  const selectedIndexGame = readlineSync.keyInSelect(gamesTitles, 'Please shoose a game');
   if (selectedIndexGame === cancel) {
-    return console.log('Maybe next time...');
+    return print('Maybe next time...');
   }
   const selectedGame = gamesNames[selectedIndexGame];
 
