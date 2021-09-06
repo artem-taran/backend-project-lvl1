@@ -1,7 +1,6 @@
 import { makeQA } from '../lib/make-qa.js';
 import getRandomNumberRange from '../lib/utils.js';
 import { repeatAskPlayer } from '../lib/make-ask.js';
-import { print } from '../lib/cli.js';
 import main from '../index.js';
 
 const gameInstruction = 'What is the result of the expression';
@@ -29,7 +28,7 @@ const createMathExpression = () => {
 };
 
 const calculator = (playerName, count) => {
-  print(gameInstruction);
+  console.log(gameInstruction);
 
   repeatAskPlayer(playerName, count, createMathExpression);
 };

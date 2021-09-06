@@ -1,5 +1,4 @@
 import { makeQA } from '../lib/make-qa.js';
-import { print } from '../lib/cli.js';
 import { repeatAskPlayer } from '../lib/make-ask.js';
 import getRandomNumberRange from '../lib/utils.js';
 import main from '../index.js';
@@ -23,7 +22,7 @@ const generateTaskWithSolution = () => {
 };
 
 const gcd = (playerName, count) => {
-  print(gameInstruction);
+  console.log(gameInstruction);
 
   repeatAskPlayer(playerName, count, generateTaskWithSolution);
 };
