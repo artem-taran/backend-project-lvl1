@@ -1,19 +1,28 @@
-<h1>Hexlet project "Brain games"</h1>
-***
-### Hexlet tests and linter status:
-[![Actions Status](https://github.com/artem-taran/backend-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/artem-taran/backend-project-lvl1/actions)
+#Hexlet project "Brain games"
+
 <a href="https://codeclimate.com/github/codeclimate/codeclimate/maintainability"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a>
 <a href="https://github.com/artem-taran/backend-project-lvl1/actions/"><img src="https://github.com/artem-taran/backend-project-lvl1/workflows/Super-Linter/badge.svg" /></a>
 
+Single player console game
 
-<H1>Examples</H1>
+##Requirements
 
-[![asciicast](https://asciinema.org/a/Cu6S4s1cZG2Mh6TyRHV3LsD5i.svg)](https://asciinema.org/a/Cu6S4s1cZG2Mh6TyRHV3LsD5i)
+- Node >= 14
+- Make >= 4
 
-[![asciicast](https://asciinema.org/a/byPfSanA3lh2nz3nym6vo5xeS.svg)](https://asciinema.org/a/byPfSanA3lh2nz3nym6vo5xeS)
+##Demo
 
-[![asciicast](https://asciinema.org/a/mq0ckWvYzf9W2fUcNlFn7Cw2s.svg)](https://asciinema.org/a/mq0ckWvYzf9W2fUcNlFn7Cw2s)
+Even: https://asciinema.org/a/434820
 
-[![asciicast](https://asciinema.org/a/AFvfUnx9FQNkth7exej50B53s.svg)](https://asciinema.org/a/AFvfUnx9FQNkth7exej50B53s)
+##Installing
 
-[![asciicast](https://asciinema.org/a/dHYwkEyFtjj6r4yOXKU3pFnEI.svg)](https://asciinema.org/a/dHYwkEyFtjj6r4yOXKU3pFnEI)
+Run **make install** in your terminal
+
+##Running
+
+Type **brain-** and one of the following games
+- calc
+- even
+- gcd
+- prime
+- progression
